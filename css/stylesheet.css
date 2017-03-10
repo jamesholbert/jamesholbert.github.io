@@ -1,0 +1,98 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.42857143;
+}
+
+div {
+    border: #132F38 solid 2px;
+    border-radius: 20px;
+    /*height: 1.6em;*/
+    /*color: #193038;*/
+    color: #FFAE59;
+    background-color: transparent;
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    box-sizing: border-box;
+}
+
+.new-line {
+  clear: both;
+}
+
+div div{
+      text-align: center;
+}
+
+#card {
+  position: relative;
+  height: 20em;
+  width: 40em;
+  background-color: #26596A;
+}
+
+#pic {
+  position: absolute;
+  top:1em;
+  right:22em;
+  width:6em;
+  height: auto;
+  /*height: 7.1em;*/
+  border: solid 1px #132F38;
+  border-radius: 15px;
+}
+
+.stat {
+  background-color: #204450;
+}
+
+td {
+  border: 2px solid #132F38;
+}
+
+table {
+  margin-left: 1em;
+}
+
+.top {
+  margin-top: 1em;
+}
+
+.description {
+  width: 25em;
+}
+td {
+  height: 1em;
+  width: 6em;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.vb {
+  border: 2px solid #132F38;
+}
+
+.no-border {
+  border: transparent;
+}
+
+.tiny {
+  width: 2em;
+}
+
+.mid-size {
+  width: 4em;
+}
+
+.inactive {
+  border-color: #3A849C;
+}
+
+.active {
+  border-color: #132F38;
+}
+
+
+
+/*# sourceMappingURL=bootstrap.css.map 
