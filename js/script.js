@@ -39,8 +39,8 @@ function setSkill(number, skill, cost, desc) {
 		document.getElementById(d).innerHTML = "";
 	} else {
 		document.getElementById(s).className = "active";
-		document.getElementById(c).className = "active tiny";
-		document.getElementById(d).className = "active description";
+		if (cost != "-") {document.getElementById(c).className = "active tiny";}
+		if (desc != "") {document.getElementById(d).className = "active description";}
 		document.getElementById(s).innerHTML = skill;
 		document.getElementById(c).innerHTML = cost;
 		document.getElementById(d).innerHTML = desc;
