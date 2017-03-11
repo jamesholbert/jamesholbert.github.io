@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
-    <script src="js/script.js"></script>
+<!--     <script src="js/script.js"></script> -->
 		<title>Adventure Bands Card Output</title>
 	</head>
   <body>
@@ -23,7 +23,7 @@
     </table>    
     <table>  
       <tr>
-        <td>Health:</td><td id="hp" class="tiny">7</td>
+        <td>Health:</td><td id="hp" class="tiny">3</td>
         <td class="no-border" style="width: 8.5em"></td>        
         </td>
         <td>Melee:</td>
@@ -34,7 +34,7 @@
     </table>    
     <table>  
       <tr>
-        <td>Stamina:</td><td class="tiny" id="stamina">9</td>
+        <td>Stamina:</td><td class="tiny" id="stamina">1</td>
         <td class="no-border" style="width: 8.5em"></td>        
         </td>
         <td>Ranged:</td>
@@ -57,11 +57,11 @@
       <tr class="skill">
         <td class="tiny">5
         </td>
-        <td id="s5">Blast
+        <td id="s5" class="inactive">
         </td>
-        <td id="c5" class="tiny">1+X
+        <td id="c5" class="inactive tiny">
         </td>
-        <td id="d5" class="description">X damage, [tier] range
+        <td id="d5" class="inactive description">
         </td>
 
 
@@ -69,7 +69,7 @@
       <tr class="skill">
         <td class="tiny">4
         </td>
-        <td id="s4"> Stamina
+        <td id="s4" class="inactive">
         </td>
         <td id="c4" class="tiny inactive">
         </td>
@@ -81,7 +81,7 @@
       <tr class="skill">
         <td class="tiny">3
         </td>
-        <td id="s3">Charge
+        <td id="s3" class="inactive">
         </td>
         <td id="c3" class="tiny inactive">
         </td>
@@ -93,7 +93,7 @@
       <tr class="skill">
         <td class="tiny">2
         </td>
-        <td id="s2">Health
+        <td id="s2" class="inactive">
         </td>
         <td id="c2" class="tiny inactive">
         </td>
@@ -105,11 +105,11 @@
       <tr class="skill">
         <td class="tiny">1
         </td>
-        <td id="s1">Blast
+        <td id="s1" class="inactive">
         </td>
-        <td id="c1" class="tiny">1+X
+        <td id="c1" class="inactive tiny">
         </td>
-        <td id="d1" class="description"> Fireball thing with range and damages
+        <td id="d1" class="description inactive">
         </td>
 
       </tr>  
@@ -118,6 +118,8 @@
 
     </table>  
   </div>
+  <script src="js/script.js"></script>
+
   <button onclick="btnBlast()">Blast</button>
   <button onclick="btnHealth()">Health</button>
   <button onclick="btnStamina()">Stamina</button>

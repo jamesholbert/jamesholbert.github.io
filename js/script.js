@@ -1,3 +1,9 @@
+document.getElementById("s5").innerHTML = ""; //Set the div's to "" so that determineTier() finds and empty div
+document.getElementById("s4").innerHTML = "";
+document.getElementById("s3").innerHTML = "";
+document.getElementById("s2").innerHTML = "";
+document.getElementById("s1").innerHTML = "";
+
 function btnBlast() {
 	setSkill(determineTier(), "Blast", "1+X", "Make the big booms");
 }
@@ -9,15 +15,15 @@ function btnStamina() {
 	setSkill(determineTier(), "Stamina", "-", "");
 
 }
-function btnRemove() {
+function btnRemove() {												//Clear from the bottom up
 	for (x=1;x<6;x++) {
-		if (document.getElementById("s" + x).innerHTML != "") {
+		if (document.getElementById("s" + x).innerHTML != "") {  			
 			setSkill(x,"");
 			break;
 		}
 	}
 }
-function determineTier() {
+function determineTier() {											//Skills fill top first, so check from the top
 	for (x=5;x>1;x--) {
 		if (document.getElementById("s" + x).innerHTML == "") {
 			return x;
@@ -38,13 +44,31 @@ function setSkill(number, skill, cost, desc) {
 		document.getElementById(c).innerHTML = "";
 		document.getElementById(d).innerHTML = "";
 	} else {
-		document.getElementById(s).className = "active";
-		if (cost != "-") {document.getElementById(c).className = "active tiny";}
-		if (desc != "") {document.getElementById(d).className = "active description";}
+		document.getElementById(s).className = "active";						//These elses are in case they don't use remove before switching the bottom skill from something that uses the 'cost' and 'desc' fields to one that doesn't
+		if (cost != "-") {document.getElementById(c).className = "active tiny";} else {document.getElementById(c).className = "inactive tiny";}  
+		if (desc != "") {document.getElementById(d).className = "active description";} else {document.getElementById(d).className = "inactive description";}
 		document.getElementById(s).innerHTML = skill;
 		document.getElementById(c).innerHTML = cost;
 		document.getElementById(d).innerHTML = desc;
 	}
+	updateStats();
+}
+
+function updateStats() {
+	var tempHP = 3;
+	var tempSta = 1;
+	for (x=1;x<=5;x++) {
+		if (document.getElementById("s"+x).innerHTML == "Health") {
+			tempHP += 2*x;
+		} else if (document.getElementById("s"+x).innerHTML == "Stamina") {
+			tempSta += 2*x;
+		} else if (document.getElementById("s"+x).innerHTML == "Fortify") {
+			tempSta += 1;
+			tempHP +=1;
+		}
+	}
+	document.getElementById("hp").innerHTML = tempHP;
+	document.getElementById("stamina").innerHTML = tempSta;
 }
 
 google.charts.load('current', {'packages':['table']});
