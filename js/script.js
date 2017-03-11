@@ -75,7 +75,6 @@ google.charts.load('current', {'packages':['table']});
 
 // Set a callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(drawGID);
-google.charts.setOnLoadCallback(drawGID2);
 
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
@@ -96,6 +95,7 @@ function handleQueryResponse(response) {
 
   var data = response.getDataTable();
   var chart = new google.visualization.Table(document.getElementById('chart_div'));
+  document.getElementById("chart_div").style.color = "black";
   chart.draw(data);
 }
 

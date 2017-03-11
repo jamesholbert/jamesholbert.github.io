@@ -17,10 +17,6 @@ div {
     box-sizing: border-box;
 }
 
-.new-line {
-  clear: both;
-}
-
 div div{
       text-align: center;
 }
@@ -91,7 +87,5 @@ td {
 .active {
   border-color: #132F38;
 }
-
-
 
 /*# sourceMappingURL=bootstrap.css.map 
