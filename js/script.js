@@ -1,4 +1,4 @@
-// document.getElementById("s5").innerHTML = ""; //Set the div's to "" so that determineTier() finds and empty div
+document.getElementById("s5").innerHTML = ""; //Set the div's to "" so that determineTier() finds and empty div
 document.getElementById("s4").innerHTML = "";
 document.getElementById("s3").innerHTML = "";
 document.getElementById("s2").innerHTML = "";
@@ -36,18 +36,23 @@ function setSkill(number, skill, cost, desc) {
 	var s = "s" + number;
 	var c = "c" + number;
 	var d = "d" + number;
+	var s2 = "s2-" + number;
 	if (skill == "") {
-		document.getElementById(s).className = "inactive";
+		document.getElementById(s).className = "inactive skill-main";
 		document.getElementById(c).className = "inactive tiny";
 		document.getElementById(d).className = "inactive description";
+		document.getElementById(s2).className = "inactive standard";		
 		document.getElementById(s).innerHTML = "";
+		document.getElementById(s2).innerHTML = "";
 		document.getElementById(c).innerHTML = "";
 		document.getElementById(d).innerHTML = "";
 	} else {
-		document.getElementById(s).className = "active";						//These elses are in case they don't use remove before switching the bottom skill from something that uses the 'cost' and 'desc' fields to one that doesn't
+		document.getElementById(s).className = "active skill-main";						//These elses are in case they don't use remove before switching the bottom skill from something that uses the 'cost' and 'desc' fields to one that doesn't
+		document.getElementById(s2).className = "active";
 		if (cost != "-") {document.getElementById(c).className = "active tiny";} else {document.getElementById(c).className = "inactive tiny";}  
 		if (desc != "") {document.getElementById(d).className = "active description";} else {document.getElementById(d).className = "inactive description";}
 		document.getElementById(s).innerHTML = skill;
+		document.getElementById(s2).innerHTML = skill;
 		document.getElementById(c).innerHTML = cost;
 		document.getElementById(d).innerHTML = desc;
 	}

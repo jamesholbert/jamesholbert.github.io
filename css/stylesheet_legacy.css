@@ -21,17 +21,18 @@ div div{
       text-align: center;
 }
 
-#name {
-  border: transparent;
-  font: 4em italic sans-serif;
+#card {
+  position: relative;
+  height: 20em;
+  width: 40em;
+  background-color: #26596A;
 }
-
 
 #pic {
   position: absolute;
   top:1em;
-  right:1em;
-  width:7em;
+  right:22em;
+  width:6em;
   height: auto;
   /*height: 7.1em;*/
   border: solid 1px #132F38;
@@ -85,25 +86,6 @@ td {
 
 .active {
   border-color: #132F38;
-}
-
-.card {
-  border: 1em solid black;
-  position: relative;
-  float: left;
-  height: 35em;
-  width: 25em;
-  background-color: #26596A;
-  margin-right: 1em;
-}
-
-.health {
-  height:1.75em;
-  font-size: 22px;
-}
-
-.skill-main {
-  width: 15em;
 }
 
 /*# sourceMappingURL=bootstrap.css.map 
