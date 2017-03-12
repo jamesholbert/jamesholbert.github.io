@@ -1,117 +1,113 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="css/stylesheet_m.css"/>
 <!--     <script src="js/script.js"></script> -->
 		<title>Adventure Bands Card Output</title>
 	</head>
   <body>
-  <div id="card">
+  <div class="card">
   <img id="pic" src="images/cont.png" />
     <table class="top">
       <tr>
-        <td style="width: 9em" id="name">
-        Taglio
+        <td style="width: 3em" id="name">
+        <i>Taglio</i>
         </td>
-        <td class="no-border" style="width: 8em"></td>        
-        </td>
-        <td>Combat</td>
-        <td class="no-border tiny"></td>
-        <td style="width: 1.5em" class="no-border">
-        <td>Athlete:</td><td class="tiny stat inactive" id="athlete"></td>
       </tr>
     </table>    
     <table>  
       <tr>
-        <td>Health:</td><td id="hp" class="tiny">3</td>
-        <td class="no-border" style="width: 8.5em"></td>        
-        </td>
-        <td>Melee:</td>
-        <td class="tiny stat" id="melee">2</td>
-        <td style="width: 1.3em" class="no-border">
-        <td>Agile:</td><td class="tiny stat" id="agile">1</td>
+        <td class="health">Health:</td><td id="hp" class="tiny health">3</td>
       </tr>      
     </table>    
     <table>  
       <tr>
-        <td>Stamina:</td><td class="tiny" id="stamina">1
+        <td class="health">Stamina:</td><td class="tiny health" id="stamina">1</td>
         </td>
-        <td class="no-border" style="width: 8.5em"></td>        
-        </td>
-        <td>Ranged:</td>
-        <td class="tiny stat" id="ranged">1</td>
-        <td style="width: 1.3em" class="no-border">
-        <td>Strategic:</td><td class="tiny stat inactive" id="strategic"></td>
       </tr>   
     </table>
     <table>  
       <tr>     
+        <td>Melee:</td>
+        <td class="tiny stat" id="melee">2</td>
+        <td style="width: 1.3em" class="no-border">
+        <td>Agile:</td><td class="tiny stat" id="agile">1</td>
         <td class="no-border" style="width: 17.5em"></td>        
-        </td>
+      </tr>
+      <tr>
+        <td>Ranged:</td>
+        <td class="tiny stat" id="ranged">1</td>
+        <td style="width: 1.3em" class="no-border">
+        <td>Strategic:</td><td class="tiny stat inactive" id="strategic"></td>
+      </tr>
+      <tr>
         <td>Range:</td>
         <td class="tiny stat inactive" id="range"></td>
         <td style="width: 1.3em" class="no-border">
         <td>Smart:</td><td class="tiny stat" id="smart">1</td>
       </tr>   
+      <tr>
+        <td class="no-border" style="width: 8em"></td>        
+        </td>
+        <!-- <td class="no-border"></td> -->
+        <td class="no-border tiny"></td>
+        <td style="width: 1.5em" class="no-border">
+        <td>Athlete:</td><td class="tiny stat inactive" id="athlete"></td>
+      </tr>
     </table>    
     <table>
       <tr class="skill">
         <td class="tiny">5
         </td>
-        <td id="s5" class="inactive">
+        <td id="s5" class="inactive skill-main">
         </td>
         <td id="c5" class="inactive tiny">
         </td>
-        <td id="d5" class="inactive description">
-        </td>
+   
 
 
       </tr>  
       <tr class="skill">
         <td class="tiny">4
         </td>
-        <td id="s4" class="inactive">
+        <td id="s4" class="inactive skill-main">
         </td>
         <td id="c4" class="tiny inactive">
         </td>
-        <td id="d4" class="description inactive"> 
-        </td>
+
 
 
       </tr>  
       <tr class="skill">
         <td class="tiny">3
         </td>
-        <td id="s3" class="inactive">
+        <td id="s3" class="inactive skill-main">
         </td>
         <td id="c3" class="tiny inactive">
         </td>
-        <td id="d3" class="description inactive"> 
-        </td>
+
 
 
       </tr>  
       <tr class="skill">
         <td class="tiny">2
         </td>
-        <td id="s2" class="inactive">
+        <td id="s2" class="inactive skill-main">
         </td>
         <td id="c2" class="tiny inactive">
         </td>
-        <td id="d2" class="description inactive"> 
-        </td>
+
 
 
       </tr>  
       <tr class="skill">
         <td class="tiny">1
         </td>
-        <td id="s1" class="inactive">
+        <td id="s1" class="inactive skill-main">
         </td>
         <td id="c1" class="inactive tiny">
         </td>
-        <td id="d1" class="description inactive">
-        </td>
+
 
       </tr>  
 
@@ -119,7 +115,9 @@
 
     </table>  
   </div>
-  <script src="js/script.js"></script>
+  <div class="card">
+  </div>
+  <script src="js/script_m.js"></script>
 
   <button onclick="btnBlast()">Blast</button>
   <button onclick="btnHealth()">Health</button>
