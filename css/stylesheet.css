@@ -56,7 +56,8 @@ table {
 }
 
 .big-description {
-  line-height: .5
+  line-height: .5;
+  letter-spacing: .01em;
 }
 
 td {
@@ -102,7 +103,7 @@ td {
   height: 35em;
   width: 25em;
   background-color: #26596A;
-  margin-right: 1em;
+  /*margin-right: 1em;*/
 }
 
 .health {
@@ -114,4 +115,8 @@ td {
   width: 15em;
 }
 
+.buttons {
+  clear: both;
+  width: 50em;
+}
 /*# sourceMappingURL=bootstrap.css.map 
