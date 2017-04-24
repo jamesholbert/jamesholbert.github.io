@@ -36,8 +36,10 @@
             <table style="width: 100%;">
             <tr>
             <td style="width: 50%;">
-                    <input type="text" name="characterName"><br>
+                    <input type="text" id="cName" name="characterName"><br>
                     <!-- <input type="submit" value="Save Character"><input type="submit" value="Load Character"> -->
+                    <button onclick="save()">Save Character</button>
+                    <button onclick="load()">Load Character</button>
                     <div id="texter"></div>
                     <button onclick="levelUp()">Level up!</button>
                     <button id="btnAction" onclick="btnAddAction()">Action Die</button><br>
