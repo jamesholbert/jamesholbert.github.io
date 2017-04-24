@@ -1,10 +1,17 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
+button {
+    border-radius: 15px;
+}
+
 #bgimg {
     background-attachment: fixed
     bottom: 0px; width: 100%; 
 }
 
+.smalltext {
+    font: 5px;
+}
 
 html {
     color: #222;
