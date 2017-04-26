@@ -33,12 +33,14 @@
             <div class="main wrapper clearfix">
             <table style="width: 100%;">
             <tr>
-            <td style="width: 50%;">
-                    <input type="text" id="cName" name="characterName"><br>
+            <td style="width: 50%; border: transparent;">
+                    <input type="text" name="characterName"><br>
                     <!-- <input type="submit" value="Save Character"><input type="submit" value="Load Character"> -->
                     <button onclick="save()">Save Character</button>
                     <button onclick="load()">Load Character</button>
-                    <div id="texter"></div>
+                    <div>
+                    <span id="texter"></span><span style="visibility: hidden;">filler</span>
+                    </div>
                     <button onclick="levelUp()">Level up!</button>
                     <button id="btnAction" onclick="btnAddAction()">Action Die</button><br>
                     <button id="btnProf" onclick="btnAddProf()">Proficiency Die</button>
@@ -52,7 +54,7 @@
                     <script src="js/main.js">
                     </script>
             </td>
-            <td>
+            <td style=" border: transparent; width: 50%">
                 <div style="border-radius: 15px; border: solid black 2px; float: left">
 <!--                 <button onclick="btnDamage()">Add 1 damage</button>
                 <button onclick="btnHeal()">Heal 1 damage</button>

@@ -13,8 +13,9 @@
                         var dexDice = 0;
                         var intDice = 0;
                         function save() {
+                            var 
                         	try {
-                        		localStorage.setItem(cName.innerHTML+"dice", JSON.stringify(totalDice));
+                        		localStorage.setItem(getElementById("characterName")+"dice", JSON.stringify(totalDice));
                         	} catch (err) {
                         		alert("Failed!");
                         	}
@@ -27,8 +28,8 @@
                         	}	
                         }
                         function getRandomInt() {
-                          var min = Math.ceil(1);
-                          var max = Math.floor(6);
+                          var min = Math.ceil(7);
+                          var max = Math.floor(1);
                           return Math.floor(Math.random() * (max - min)) + min;
                         }
                         function findType(type) {
@@ -45,24 +46,24 @@
                             if (CP === 0) {
                                 outOfCP();
                             } else {
-                            	if (actionDice === 0) {
-	                                btnProf.style.display="none";
-	                                btnStr.style.display="none";
-	                                btnDex.style.display="none";
-	                                btnInt.style.display="none";
-                            	} else {
-                            		btnProf.style.display="inline";
-	                                btnStr.style.display="inline";
-	                                btnDex.style.display="inline";
-	                                btnInt.style.display="inline";
-                            	}
-                            	if (profDice === 0) {
-                            		btnSavvy.style.display="none";
-                            		btnMastery.style.display="none";
-                            	} else {
-	                                btnSavvy.style.display="inline";
-	                                btnMastery.style.display="inline";
-                            	}
+                                if (actionDice === 0) {
+                                    btnProf.style.visibility="hidden";
+                                    btnStr.style.visibility="hidden";
+                                    btnDex.style.visibility="hidden";
+                                    btnInt.style.visibility="hidden";
+                                } else {
+                                    btnProf.style.visibility="visible";
+                                    btnStr.style.visibility="visible";
+                                    btnDex.style.visibility="visible";
+                                    btnInt.style.visibility="visible";
+                                }
+                                if (profDice === 0) {
+                                    btnSavvy.style.visibility="hidden";
+                                    btnMastery.style.visibility="hidden";
+                                } else {
+                                    btnSavvy.style.visibility="visible";
+                                    btnMastery.style.visibility="visible";
+                                }
                             }
                             cAction.innerHTML = actionDice;
                             cProf.innerHTML = profDice;
@@ -71,20 +72,20 @@
                             cStr.innerHTML = strDice;
                             cInt.innerHTML = intDice;
                             cDex.innerHTML = dexDice;
-                        }
+                        }                       
                         function outOfCP() {
-                            btnProf.style.display='none';
-                            btnSavvy.style.display = 'none';
-                            btnMastery.style.display = 'none';
-                            btnStr.style.display = 'none';
-                            btnDex.style.display = 'none';
-                            btnInt.style.display = 'none';
-                            btnAction.style.display = 'none';
-                            if (totalDice.length === 0) {
-                                btnRoll.style.display = 'none';
-                            	btnAction.style.display = 'inline';
+                            btnProf.style.visibility='hidden';
+                            btnSavvy.style.visibility = 'hidden';
+                            btnMastery.style.visibility = 'hidden';
+                            btnStr.style.visibility = 'hidden';
+                            btnDex.style.visibility = 'hidden';
+                            btnInt.style.visibility = 'hidden';
+                            btnAction.style.visibility = 'hidden';
+                            if (totalDice.length === 0) {                                       //This is just for the very first time the function is called
+                                btnRoll.style.visibility = 'hidden';
+                                btnAction.style.visibility = 'visible';
                             } 
-                        }
+                        }                      
                         function dice(name, first, second, third, fourth, fifth, sixth) {
                             this.name = name;
                             this.first = first;
@@ -96,6 +97,7 @@
 
                             this.roll = function () {
                                 var myInt = getRandomInt();
+                                console.log(myInt);
                                   if (myInt === 1) {
                                     return this.first;
                                   } else if (myInt === 2) {
@@ -112,6 +114,24 @@
                                 
                             }
                         }
+                        // function drawCrates (){
+                        //     var fragment = document.createDocumentFragment(),
+                        //         img = document.createElement('img');
+
+                        //     img.setAttribute("src", "images/str.png");
+                        //     fragment.appendChild(img);
+                        //     for(i = 0; i < 9; i++){
+                        //         fragment.appendChild(img.cloneNode(true));
+                        //     }
+
+                        //     document.body.appendChild(fragment);
+                        // }
+                        // drawCrates();
+                            // var img = new Image();
+                            // img.src = "images/success.png";
+                            // img.width = 10;
+                            // img.height = 10;
+                            // texter.appendChild(img);
                         var texter = document.getElementById('texter');  
                         var btnAction = document.getElementById('btnAction');
                         var btnProf = document.getElementById('btnProf');
@@ -142,46 +162,29 @@
                             } else {
                                 texter.innerHTML = "";
                             }
-                            btnRoll.style.display = "block";
+                            btnRoll.style.visibility = "visible";
                             var x = totalDice.length;
                             for (var i = 0; i < x; i++) {
                                 console.log(totalDice[i].name);
-                            }                        
+                            }
                         }
                         function levelUp() {
                             CP += 1;
-                            updateTexter();
-                            btnAction.style.display = 'inline';
+                            btnAction.style.visibility = 'visible';
                             var x = findType("Proficiency Dice");
-                            if (profDice > 0) {
-                                btnSavvy.style.display="inline";
-                                btnMastery.style.display="inline";
-                            }
-                            if (actionDice > 0) {
-								btnProf.style.display="block";
-                                btnStr.style.display="inline";
-                                btnDex.style.display="inline";
-                                btnInt.style.display="inline";
-                            }
+                            updateButtons();
                             resSuccesses.innerHTML="Spend CP, roll your dice and see the results here!";
 	                        resExp.innerHTML="";                        
 	                        resStr.innerHTML="";                        
 	                        resInt.innerHTML="";                        
 	                        resDex.innerHTML="";                        
 	                        resBlanks.innerHTML=""; 
+                            updateTexter();
                         }
                         function btnAddAction() {
                             CP -= 1;
                             actionDice +=1;
                             totalDice.push(new dice("Action Die", s, s, b, b, b, b))
-                            if (CP > 0) {
-                                btnProf.style.display="block";
-                                btnStr.style.display="inline";
-                                btnDex.style.display="inline";
-                                btnInt.style.display="inline";
-                            } else {
-                                outOfCP();
-                            }
                             updateTexter();
                             updateButtons();
                         }
