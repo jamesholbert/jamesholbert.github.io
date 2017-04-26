@@ -13,7 +13,6 @@
                         var dexDice = 0;
                         var intDice = 0;
                         function save() {
-                            var 
                         	try {
                         		localStorage.setItem(getElementById("characterName")+"dice", JSON.stringify(totalDice));
                         	} catch (err) {
