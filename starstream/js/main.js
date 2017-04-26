@@ -38,7 +38,6 @@
                                     return i;
                                 } 
                             }
-                            console.log("Didn't find type");
                             return 99;
                         }
                         function updateButtons() {
@@ -96,7 +95,6 @@
 
                             this.roll = function () {
                                 var myInt = getRandomInt();
-                                console.log(myInt);
                                   if (myInt === 1) {
                                     return this.first;
                                   } else if (myInt === 2) {
@@ -164,7 +162,7 @@
                             btnRoll.style.visibility = "visible";
                             var x = totalDice.length;
                             for (var i = 0; i < x; i++) {
-                                console.log(totalDice[i].name);
+                                // console.log(totalDice[i].name);
                             }
                         }
                         function levelUp() {
@@ -274,7 +272,7 @@
                                 	dex +=1
                                 }
                             }
-                            console.log(results);
+                            // console.log(results);
                             updateTexter();
                             resSuccesses.innerHTML = "Successes: " + successes;
                             resExp.innerHTML = "Exploits " + exploits;
