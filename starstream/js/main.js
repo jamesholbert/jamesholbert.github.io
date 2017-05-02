@@ -151,7 +151,7 @@
     var cDex = document.getElementById('currentDexDice');
     var cInt = document.getElementById('currentIntDice');
     var burntDice = document.getElementById('burntDice');
-    CP = 10
+    var CP = 10
     texter.innerHTML = "Time to create a character! You have " + CP + " CP remaining.";
     function updateTexter() {
         if (CP > 0) {
