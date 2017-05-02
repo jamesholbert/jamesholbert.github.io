@@ -142,12 +142,7 @@
     var btnDex = document.getElementById('btnDex');
     var btnInt = document.getElementById('btnInt');
     var btnRoll = document.getElementById('btnRoll');
-    var resultsDiv = document.getElementById('resultsDiv');                        
-    var resExp = document.getElementById('resExp');                        
-    var resStr = document.getElementById('resStr');                        
-    var resInt = document.getElementById('resInt');                        
-    var resDex = document.getElementById('resDex');                        
-    var resBlanks = document.getElementById('resBlanks');  
+    var resultsDiv = document.getElementById('resultsDiv');                         
     var cAction = document.getElementById('currentActionDice');
     var cProf = document.getElementById('currentProfDice');
     var cSavvy = document.getElementById('currentSavvyDice');
@@ -176,11 +171,6 @@
         var x = findType("Proficiency Dice");
         updateButtons();
         resultsDiv.innerHTML="Spend CP, roll your dice and see the results here!";
-        resExp.innerHTML="";                        
-        resStr.innerHTML="";                        
-        resInt.innerHTML="";                        
-        resDex.innerHTML="";                        
-        resBlanks.innerHTML=""; 
         updateTexter();
     }
     function btnAddAction() {

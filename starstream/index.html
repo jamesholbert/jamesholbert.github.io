@@ -35,9 +35,8 @@
             <tr>
             <td style="width: 50%; border: transparent;">
                     <input type="text" name="characterName"><br>
-                    <!-- <input type="submit" value="Save Character"><input type="submit" value="Load Character"> -->
-                    <button onclick="save()">Save Character</button>
-                    <button onclick="load()">Load Character</button>
+<!--                     <button onclick="save()">Save Character</button>
+                    <button onclick="load()">Load Character</button> -->
                     <div>
                     <span id="texter"></span><span style="visibility: hidden;">filler</span>
                     </div>
@@ -54,14 +53,14 @@
                     <script src="js/main.js">
                     </script>
             </td>
-            <td style=" border: transparent; width: 50%">
-                <div style="border-radius: 15px; border: solid black 2px; float: left">
+            <td style=" border: transparent; width: 50%; height:100%;">
+                <div style="border-radius: 15px; border: solid black 2px; float: left; height: 100%;">
 <!--                 <button onclick="btnDamage()">Add 1 damage</button>
                 <button onclick="btnHeal()">Heal 1 damage</button>
                 <button onclick="btnRest()">Rest 1</button> -->
-                <span style="float:left; width:50%">
-                <div id="resultsDiv" class="centerDiv">Spend CP, roll your dice and see the results here!</div>
-                <div id="burntDice" class="centerDiv"></div>
+                <span style="float:left; width:50%; height: 100%">
+                <div id="resultsDiv" class="centerDiv" style="height: 50%;">Spend CP, roll your dice and see the results here!</div>
+                <div id="burntDice" class="centerDiv" style="height: 50%;"></div>
 
                 </span><span style="float:right; width:50%">
                 <div style="float: left;">Action Dice: </div><div style="float: right" id="currentActionDice"></div><br>
