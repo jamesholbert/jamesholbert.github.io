@@ -272,7 +272,17 @@
             } else if (results[i] === "Dexterity") {
             	iResults[i].src="images/sd.png";
             }
-            iResults[i].style="width:40px; border-radius:5px;"
+            iResults[i].style="width:40px; border-radius:5px;";
+            iResults[i].onclick= function() {
+                var thisClone=document.createElement('img');
+                thisClone.src=this.src;
+                this.onclick=""
+                this.src="images/damage.png"
+                //resultsDiv.appendChild(this);
+                thisClone.style="width:40px; border-radius:5px;";
+                document.getElementById('burntDice').appendChild(thisClone);
+
+            }
             resultsDiv.appendChild(iResults[i]);
         }
         
