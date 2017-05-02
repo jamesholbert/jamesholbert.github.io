@@ -118,13 +118,6 @@ function dice(name, first, second, third, fourth, fifth, sixth) {
 // function drawCrates (){
 //     var fragment = document.createDocumentFragment(),
 //         img = document.createElement('img');
-
-//     img.setAttribute('src', 'images/str.png');
-//     fragment.appendChild(img);
-//     for(i = 0; i < 9; i++){
-//         fragment.appendChild(img.cloneNode(true));
-//     }
-
 //     document.body.appendChild(fragment);
 // }
 // drawCrates();
