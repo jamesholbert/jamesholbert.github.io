@@ -13,36 +13,68 @@ var strDice = 0;
 var dexDice = 0;
 var intDice = 0;
 
-
-
-function save() {
-  try {
-    localStorage.setItem(getElementById('characterName')+'dice', JSON.stringify(totalDice));
-  } catch (err) {
-    alert('Failed!');
-  }
-}
-function load() {
-  try {
-    var totalDice = JSON.parse(localStorage.getItem(cName.innerHTML+'dice'));
-  } catch(err) {
-    alert('Failed!');
-  }
-}
+var texter = document.getElementById('texter');
+var btnAction = document.getElementById('btnAction');
+var btnProf = document.getElementById('btnProf');
+var btnSavvy = document.getElementById('btnSavvy');
+var btnMastery = document.getElementById('btnMastery');
+var btnStr = document.getElementById('btnStr');
+var btnDex = document.getElementById('btnDex');
+var btnInt = document.getElementById('btnInt');
+var btnRoll = document.getElementById('btnRoll');
+var resultsDiv = document.getElementById('resultsDiv');
+var cAction = document.getElementById('currentActionDice');
+var cProf = document.getElementById('currentProfDice');
+var cSavvy = document.getElementById('currentSavvyDice');
+var cMastery = document.getElementById('currentMasteryDice');
+var cStr = document.getElementById('currentStrDice');
+var cDex = document.getElementById('currentDexDice');
+var cInt = document.getElementById('currentIntDice');
+var burntDice = document.getElementById('burntDice');
+var CP = 10;
+var level=1;
+// function save() {
+//   try {
+//     localStorage.setItem(getElementById('characterName')+'dice', JSON.stringify(totalDice));
+//   } catch (err) {
+//     alert('Failed!');
+//   }
+// }
+// function load() {
+//   try {
+//     var totalDice = JSON.parse(localStorage.getItem(cName.innerHTML+'dice'));
+//   } catch(err) {
+//     alert('Failed!');
+//   }
+// }
 function getRandomInt() {
   var min = Math.ceil(7);
   var max = Math.floor(1);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 function findType(type) {
-  var x = totalDice.length;
-  for (var i = 0; i < x; i++) {
+  //var x = totalDice.length;
+  for (var i = 0; i < totalDice.length; i++) {
     if (totalDice[i].name === type) {
       return i;
     }
   }
   return 99;
 }
+// Create function to count types here!
+// That way I don't need variables to keep track of them.
+// This should also replace the above function.
+
+function countType(type) {
+  var myCount = 0
+  for (var i = 0; i < totalDice.length; i++) {
+    if (totalDice[i].name === type) {
+      myCount++;
+    }
+  }
+  return myCount;
+}
+
 function updateButtons() {
   if (CP === 0) {
     outOfCP();
@@ -82,9 +114,11 @@ function outOfCP() {
   btnDex.style.visibility = 'hidden';
   btnInt.style.visibility = 'hidden';
   btnAction.style.visibility = 'hidden';
-  if (totalDice.length === 0) {                                       //This is just for the very first time the function is called
+  if (totalDice.length === 0) {                                       //This line is just for the very first time the function is called
     btnRoll.style.visibility = 'hidden';
     btnAction.style.visibility = 'visible';
+    texter.innerHTML = 'Time to create a character! You have ' + CP + ' CP remaining.';
+
   }
 }
 
@@ -116,39 +150,20 @@ function dice(name, first, second, third, fourth, fifth, sixth) {
   }
 }
 
-var texter = document.getElementById('texter');
-var btnAction = document.getElementById('btnAction');
-var btnProf = document.getElementById('btnProf');
-var btnSavvy = document.getElementById('btnSavvy');
-var btnMastery = document.getElementById('btnMastery');
-var btnStr = document.getElementById('btnStr');
-var btnDex = document.getElementById('btnDex');
-var btnInt = document.getElementById('btnInt');
-var btnRoll = document.getElementById('btnRoll');
-var resultsDiv = document.getElementById('resultsDiv');
-var cAction = document.getElementById('currentActionDice');
-var cProf = document.getElementById('currentProfDice');
-var cSavvy = document.getElementById('currentSavvyDice');
-var cMastery = document.getElementById('currentMasteryDice');
-var cStr = document.getElementById('currentStrDice');
-var cDex = document.getElementById('currentDexDice');
-var cInt = document.getElementById('currentIntDice');
-var burntDice = document.getElementById('burntDice');
-var CP = 10;
-texter.innerHTML = 'Time to create a character! You have ' + CP + ' CP remaining.';
+
 function updateTexter() {
   if (CP > 0) {
     texter.innerHTML = 'You have ' + CP + ' CP remaining.';
   } else {
-    texter.innerHTML = '';
+    texter.innerHTML = 'Level: ' + level;
   }
   btnRoll.style.visibility = 'visible';
   var x = totalDice.length;
   for (var i = 0; i < x; i++) {
-    // console.log(totalDice[i].name);
   }
 }
 function levelUp() {
+  level +=1;
   CP += 1;
   btnAction.style.visibility = 'visible';
   var x = findType('Proficiency Dice');
@@ -257,7 +272,6 @@ function btnAddStr() {
         thisClone.src=this.src;
         this.onclick=''
         this.src='images/damage.png'
-        //resultsDiv.appendChild(this);
         thisClone.style='width:40px; border-radius:5px;';
         burntDice.appendChild(thisClone);
 
@@ -265,12 +279,9 @@ function btnAddStr() {
       resultsDiv.appendChild(iResults[i]);
     }
 
-
-    //
-    // console.log(results);
     updateTexter();
-
 
   }
 
   outOfCP();
+
