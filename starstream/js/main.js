@@ -155,6 +155,7 @@
     var cStr = document.getElementById('currentStrDice');
     var cDex = document.getElementById('currentDexDice');
     var cInt = document.getElementById('currentIntDice');
+    var burntDice = document.getElementById('burntDice');
     CP = 10
     texter.innerHTML = "Time to create a character! You have " + CP + " CP remaining.";
     function updateTexter() {
@@ -254,6 +255,9 @@
         var results = [];
         var iResults = [];
         resultsDiv.innerHTML = "";
+        burntDice.style="border: solid black 1px; border-radius: 5px;"
+        burntDice.style.visibility = "hidden";
+        burntDice.innerHTML = "Burnt Dice:";
 
         var x = totalDice.length;
         for (var i = 0; i < x; i++) {
@@ -274,13 +278,15 @@
             }
             iResults[i].style="width:40px; border-radius:5px;";
             iResults[i].onclick= function() {
+                burntDice.style.visibility = "visible";
+
                 var thisClone=document.createElement('img');
                 thisClone.src=this.src;
                 this.onclick=""
                 this.src="images/damage.png"
                 //resultsDiv.appendChild(this);
                 thisClone.style="width:40px; border-radius:5px;";
-                document.getElementById('burntDice').appendChild(thisClone);
+                burntDice.appendChild(thisClone);
 
             }
             resultsDiv.appendChild(iResults[i]);
