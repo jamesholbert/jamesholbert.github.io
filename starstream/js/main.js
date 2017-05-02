@@ -115,17 +115,7 @@ function dice(name, first, second, third, fourth, fifth, sixth) {
 
   }
 }
-// function drawCrates (){
-//     var fragment = document.createDocumentFragment(),
-//         img = document.createElement('img');
-//     document.body.appendChild(fragment);
-// }
-// drawCrates();
-// var img = new Image();
-// img.src = 'images/success.png';
-// img.width = 10;
-// img.height = 10;
-// texter.appendChild(img);
+
 var texter = document.getElementById('texter');
 var btnAction = document.getElementById('btnAction');
 var btnProf = document.getElementById('btnProf');
