@@ -257,7 +257,7 @@
         resultsDiv.innerHTML = "";
         burntDice.style="border: solid black 1px; border-radius: 5px;"
         burntDice.style.visibility = "hidden";
-        burntDice.innerHTML = "Burnt Dice:";
+        burntDice.innerHTML = "Used Dice:";
 
         var x = totalDice.length;
         for (var i = 0; i < x; i++) {
