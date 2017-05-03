@@ -80,22 +80,22 @@ function updateButtons() {
     outOfCP();
   } else {
     if (actionDice === 0) {
-      btnProf.style.visibility='hidden';
-      btnStr.style.visibility='hidden';
-      btnDex.style.visibility='hidden';
-      btnInt.style.visibility='hidden';
+      btnProf.style.opacity='0.5';
+      btnStr.style.opacity='0.5';
+      btnDex.style.opacity='0.5';
+      btnInt.style.opacity='0.5';
     } else {
-      btnProf.style.visibility='visible';
-      btnStr.style.visibility='visible';
-      btnDex.style.visibility='visible';
-      btnInt.style.visibility='visible';
+      btnProf.style.opacity='1';
+      btnStr.style.opacity='1';
+      btnDex.style.opacity='1';
+      btnInt.style.opacity='1';
     }
     if (profDice === 0) {
-      btnSavvy.style.visibility='hidden';
-      btnMastery.style.visibility='hidden';
+      btnSavvy.style.opacity='0.5';
+      btnMastery.style.opacity='0.5';
     } else {
-      btnSavvy.style.visibility='visible';
-      btnMastery.style.visibility='visible';
+      btnSavvy.style.opacity='1';
+      btnMastery.style.opacity='1';
     }
   }
   cAction.innerHTML = actionDice;
@@ -107,16 +107,16 @@ function updateButtons() {
   cDex.innerHTML = dexDice;
 }
 function outOfCP() {
-  btnProf.style.visibility='hidden';
-  btnSavvy.style.visibility = 'hidden';
-  btnMastery.style.visibility = 'hidden';
-  btnStr.style.visibility = 'hidden';
-  btnDex.style.visibility = 'hidden';
-  btnInt.style.visibility = 'hidden';
-  btnAction.style.visibility = 'hidden';
+  btnProf.style.opacity='0.5';
+  btnSavvy.style.opacity = '0.5';
+  btnMastery.style.opacity = '0.5';
+  btnStr.style.opacity = '0.5';
+  btnDex.style.opacity = '0.5';
+  btnInt.style.opacity = '0.5';
+  btnAction.style.opacity = '0.5';
   if (totalDice.length === 0) {                                       //This line is just for the very first time the function is called
-    btnRoll.style.visibility = 'hidden';
-    btnAction.style.visibility = 'visible';
+    btnRoll.style.opacity = '0.5';
+    btnAction.style.opacity = '1';
     texter.innerHTML = 'Time to create a character! You have ' + CP + ' CP remaining.';
 
   }
@@ -157,7 +157,7 @@ function updateTexter() {
   } else {
     texter.innerHTML = 'Level: ' + level;
   }
-  btnRoll.style.visibility = 'visible';
+  btnRoll.style.opacity = '1';
   var x = totalDice.length;
   for (var i = 0; i < x; i++) {
   }
@@ -165,61 +165,75 @@ function updateTexter() {
 function levelUp() {
   level +=1;
   CP += 1;
-  btnAction.style.visibility = 'visible';
+  btnAction.style.opacity = '1';
   var x = findType('Proficiency Dice');
   updateButtons();
   resultsDiv.innerHTML='Spend CP, roll your dice and see the results here!';
   updateTexter();
 }
 function btnAddAction() {
-  CP -= 1;
-  actionDice +=1;
-  totalDice.push(new dice('Action Die', s, s, b, b, b, b))
-  updateTexter();
-  updateButtons();
+  if (CP > 0) {
+    CP -= 1;
+    actionDice +=1;
+    totalDice.push(new dice('Action Die', s, s, b, b, b, b))
+    updateTexter();
+    updateButtons();
+  }  
 }
 function btnAddProf() {
-  CP -= 1;
-  actionDice -=1;
-  profDice +=1;
-  totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
-  updateButtons();
+  if (CP > 0 && actionDice > 0) {
+    CP -= 1;
+    actionDice -=1;
+    profDice +=1;
+    totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
+    updateButtons();
 
-  var x = findType('Action Die');
-  totalDice.splice(x, 1);
-  updateTexter();
+    var x = findType('Action Die');
+    totalDice.splice(x, 1);
+    updateTexter();
+  }
 }
 function btnAddSavvy() {
-  CP -= 1;
-  profDice-=1;
-  savvyDice+=1;
-  totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
-  updateButtons();
+  if (CP > 0 && profDice > 0) {
 
-  var x = findType('Proficiency Die');
-  totalDice.splice(x, 1);
-  updateTexter();
+    CP -= 1;
+    profDice-=1;
+    savvyDice+=1;
+    totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
+    updateButtons();
+
+    var x = findType('Proficiency Die');
+    totalDice.splice(x, 1);
+    updateTexter();
+  }  
 }
 function btnAddMastery() {
-  CP -= 1;
-  profDice-=1;
-  masteryDice+=1;
-  totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
-  updateButtons();
-  var x = findType('Proficiency Die');
-  totalDice.splice(x, 1);
-  updateTexter();
+  if (CP > 0 && profDice > 0) {
+
+    CP -= 1;
+    profDice-=1;
+    masteryDice+=1;
+    totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
+    updateButtons();
+    var x = findType('Proficiency Die');
+    totalDice.splice(x, 1);
+    updateTexter();
+  }
 }
 function btnAddStr() {
-  CP -= 1;
-  actionDice -= 1;
-  strDice+=1;
-  totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
-  updateButtons();
-  var x = findType('Action Die');
-  totalDice.splice(x, 1);
-  updateTexter();                        }
-  function btnAddDex() {
+  if (CP > 0 && actionDice > 0) {
+    CP -= 1;
+    actionDice -= 1;
+    strDice+=1;
+    totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
+    updateButtons();
+    var x = findType('Action Die');
+    totalDice.splice(x, 1);
+    updateTexter(); 
+    }
+}
+function btnAddDex() {
+  if (CP > 0 && actionDice > 0) {
     CP -= 1;
     actionDice -= 1;
     dexDice +=1;
@@ -229,7 +243,10 @@ function btnAddStr() {
     totalDice.splice(x, 1);
     updateTexter();
   }
-  function btnAddInt() {
+}
+function btnAddInt() {
+  if (CP > 0 && actionDice > 0) {
+
     CP -= 1;
     actionDice -= 1;
     intDice +=1;
@@ -238,13 +255,14 @@ function btnAddStr() {
     var x = findType('Action Die');
     totalDice.splice(x, 1);
     updateTexter();
-  }
+  }  
+}
   function btnRoller() {
     var results = [];
     var iResults = [];
     resultsDiv.innerHTML = '';
     burntDice.style='border: solid black 1px; border-radius: 5px;'
-    burntDice.style.visibility = 'hidden';
+    burntDice.style.opacity = '0.5';
     burntDice.innerHTML = 'Used Dice:';
 
     var x = totalDice.length;
@@ -266,7 +284,7 @@ function btnAddStr() {
       }
       iResults[i].style='width:40px; border-radius:5px;';
       iResults[i].onclick= function() {
-        burntDice.style.visibility = 'visible';
+        burntDice.style.opacity = '1';
 
         var thisClone=document.createElement('img');
         thisClone.src=this.src;
