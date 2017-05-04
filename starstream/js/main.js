@@ -33,20 +33,22 @@ var cInt = document.getElementById('currentIntDice');
 var burntDice = document.getElementById('burntDice');
 var CP = 10;
 var level=1;
-// function save() {
-//   try {
-//     localStorage.setItem(getElementById('characterName')+'dice', JSON.stringify(totalDice));
-//   } catch (err) {
-//     alert('Failed!');
-//   }
-// }
-// function load() {
-//   try {
-//     var totalDice = JSON.parse(localStorage.getItem(cName.innerHTML+'dice'));
-//   } catch(err) {
-//     alert('Failed!');
-//   }
-// }
+function save() {
+  try {
+    localStorage.setItem('hi', JSON.stringify(totalDice));
+    console.log("saving");
+  } catch (err) {
+    alert('Failed! Error: ' + err);
+  }
+}
+function load() {
+  try {
+    var totalDice = JSON.parse(localStorage.getItem('hi'));
+    console.log("loading");
+  } catch(err) {
+    alert('Failed! Error: ' + err);
+  }
+}
 function getRandomInt() {
   var min = Math.ceil(7);
   var max = Math.floor(1);
