@@ -39,7 +39,6 @@ function save() {
   try {
     var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
     localStorage.save = JSON.stringify(dataToStore);
-    console.log("saving");
   } catch (err) {
     alert('Failed! Error: ' + err);
   }
@@ -47,7 +46,6 @@ function save() {
 function load() {
   try {
     var dataToRetrieve = JSON.parse(localStorage.save);
-    console.log(dataToRetrieve);
     totalDice = [];
     actionDice = dataToRetrieve[0];
     profDice = dataToRetrieve[1];
@@ -56,9 +54,8 @@ function load() {
     strDice = dataToRetrieve[4];
     dexDice = dataToRetrieve[5];
     intDice = dataToRetrieve[6];
-    CP = 10;
     level=dataToRetrieve[7];
-    CP+=dataToRetrieve[8];
+    CP=dataToRetrieve[8];
     for (i=0;i<dataToRetrieve[0];i++) {
       totalDice.push(new dice('Action Die', s, s, b, b, b, b))
     }
