@@ -1,10 +1,10 @@
 'use strict'; // use strict forces the interpreter to be more strict with errors, good for debugging
 
 // Character object constructor
-function Character(name, level, cp, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice){
+function Character(name, level, CP, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice){
   this.name = name,
   this.level = level,
-  this.cp = cp,
+  this.CP = CP,
   this.actionDice = actionDice,
   this.strDice = strDice,
   this.dexDice = dexDice,
@@ -32,6 +32,19 @@ var intDice = 0;
 var CP = 10;
 var level=1;
 
+//save() function instantiates new character object, then stores that object to a variable named after
+//the user's character name in local storage
+function save(){
+  try {
+    var x = new Character(cName.value, level, CP, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice);
+    x;
+    localStorage[cName.value] = JSON.stringify(x);
+    console.log('saving character ' + cName.value);
+  } catch (err) {
+    alert('Failed! Error: ' + err);
+  }
+}
+
 var texter = document.getElementById('texter');
 var btnAction = document.getElementById('btnAction');
 var btnProf = document.getElementById('btnProf');
@@ -52,15 +65,15 @@ var cInt = document.getElementById('currentIntDice');
 var burntDice = document.getElementById('burntDice');
 var cName = document.getElementById('characterName');
 
-function save() {
-  try {
-    var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
-    localStorage.save = JSON.stringify(dataToStore);
-    console.log("saving");
-  } catch (err) {
-    alert('Failed! Error: ' + err);
-  }
-}
+// function save() {
+//   try {
+//     var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
+//     localStorage.save = JSON.stringify(dataToStore);
+//     console.log("saving");
+//   } catch (err) {
+//     alert('Failed! Error: ' + err);
+//   }
+// }
 function load() {
   try {
     var dataToRetrieve = JSON.parse(localStorage.save);
