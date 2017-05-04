@@ -12,6 +12,8 @@ var masteryDice = 0;
 var strDice = 0;
 var dexDice = 0;
 var intDice = 0;
+var CP = 10;
+var level=1;
 
 var texter = document.getElementById('texter');
 var btnAction = document.getElementById('btnAction');
@@ -31,11 +33,12 @@ var cStr = document.getElementById('currentStrDice');
 var cDex = document.getElementById('currentDexDice');
 var cInt = document.getElementById('currentIntDice');
 var burntDice = document.getElementById('burntDice');
-var CP = 10;
-var level=1;
+var cName = document.getElementById('characterName');
+
 function save() {
   try {
-    localStorage.setItem('hi', JSON.stringify(totalDice));
+    var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
+    localStorage.save = JSON.stringify(dataToStore);
     console.log("saving");
   } catch (err) {
     alert('Failed! Error: ' + err);
@@ -43,8 +46,45 @@ function save() {
 }
 function load() {
   try {
-    var totalDice = JSON.parse(localStorage.getItem('hi'));
-    console.log("loading");
+    var dataToRetrieve = JSON.parse(localStorage.save);
+    console.log(dataToRetrieve);
+    totalDice = [];
+    actionDice = dataToRetrieve[0];
+    profDice = dataToRetrieve[1];
+    savvyDice = dataToRetrieve[2];
+    masteryDice = dataToRetrieve[3];
+    strDice = dataToRetrieve[4];
+    dexDice = dataToRetrieve[5];
+    intDice = dataToRetrieve[6];
+    CP = 10;
+    level=dataToRetrieve[7];
+    CP+=dataToRetrieve[8];
+    for (i=0;i<dataToRetrieve[0];i++) {
+      totalDice.push(new dice('Action Die', s, s, b, b, b, b))
+    }
+    for (i=0;i<dataToRetrieve[1];i++) {
+      totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
+
+    }
+    for (i=0;i<dataToRetrieve[2];i++) {
+      totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
+    }
+    for (i=0;i<dataToRetrieve[3];i++) {
+      totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
+    }
+    for (i=0;i<dataToRetrieve[4];i++) {
+      totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
+    }
+    for (i=0;i<dataToRetrieve[5];i++) {
+      totalDice.push(new dice('Dexterity Die', 'Dexterity', 'Dexterity', 'Dexterity', b, b, b))
+    }
+    for (i=0;i<dataToRetrieve[6];i++) {
+      totalDice.push(new dice('Intelligence Die', 'Intelligence', 'Intelligence', 'Intelligence', b, b, b))
+    }
+    resultsDiv.innerHTML = '';
+
+    updateButtons();
+    updateTexter();
   } catch(err) {
     alert('Failed! Error: ' + err);
   }
@@ -119,7 +159,7 @@ function outOfCP() {
   if (totalDice.length === 0) {                                       //This line is just for the very first time the function is called
     btnRoll.style.opacity = '0.5';
     btnAction.style.opacity = '1';
-    texter.innerHTML = 'Time to create a character! You have ' + CP + ' CP remaining.';
+    texter.innerHTML = 'You have ' + CP + ' CP remaining.';
 
   }
 }
@@ -260,47 +300,48 @@ function btnAddInt() {
   }  
 }
   function btnRoller() {
-    var results = [];
-    var iResults = [];
-    resultsDiv.innerHTML = '';
-    burntDice.style='border: solid black 1px; border-radius: 5px;'
-    burntDice.style.opacity = '0.5';
-    burntDice.innerHTML = 'Used Dice:';
+    if (totalDice.length > 0) {
+      var results = [];
+      var iResults = [];
+      resultsDiv.innerHTML = '';
+      burntDice.style='border: solid black 1px; border-radius: 5px;'
+      burntDice.style.opacity = '0.5';
+      burntDice.innerHTML = 'Used Dice:';
 
-    var x = totalDice.length;
-    for (var i = 0; i < x; i++) {
-      results.push(totalDice[i].roll());
-      iResults[i]=document.createElement('img');
-      if (results[i] === 'Success') {
-        iResults[i].src='images/s.png';
-      } else if (results[i] === 'Blank') {
-        iResults[i].src='images/blank.svg';
-      } else if (results[i] === 'Exploit') {
-        iResults[i].src='images/se.png';
-      } else if (results[i] === 'Strength') {
-        iResults[i].src='images/ss.png';
-      } else if (results[i] === 'Intelligence') {
-        iResults[i].src='images/si.png';
-      } else if (results[i] === 'Dexterity') {
-        iResults[i].src='images/sd.png';
+      var x = totalDice.length;
+      for (var i = 0; i < x; i++) {
+        results.push(totalDice[i].roll());
+        iResults[i]=document.createElement('img');
+        if (results[i] === 'Success') {
+          iResults[i].src='images/s.png';
+        } else if (results[i] === 'Blank') {
+          iResults[i].src='images/blank.svg';
+        } else if (results[i] === 'Exploit') {
+          iResults[i].src='images/se.png';
+        } else if (results[i] === 'Strength') {
+          iResults[i].src='images/ss.png';
+        } else if (results[i] === 'Intelligence') {
+          iResults[i].src='images/si.png';
+        } else if (results[i] === 'Dexterity') {
+          iResults[i].src='images/sd.png';
+        }
+        iResults[i].style='width:40px; border-radius:5px;';
+        iResults[i].onclick= function() {
+          burntDice.style.opacity = '1';
+
+          var thisClone=document.createElement('img');
+          thisClone.src=this.src;
+          this.onclick=''
+          this.src='images/damage.png'
+          thisClone.style='width:40px; border-radius:5px;';
+          burntDice.appendChild(thisClone);
+
+        }
+        resultsDiv.appendChild(iResults[i]);
       }
-      iResults[i].style='width:40px; border-radius:5px;';
-      iResults[i].onclick= function() {
-        burntDice.style.opacity = '1';
 
-        var thisClone=document.createElement('img');
-        thisClone.src=this.src;
-        this.onclick=''
-        this.src='images/damage.png'
-        thisClone.style='width:40px; border-radius:5px;';
-        burntDice.appendChild(thisClone);
-
-      }
-      resultsDiv.appendChild(iResults[i]);
+      updateTexter();
     }
-
-    updateTexter();
-
   }
 
   outOfCP();
