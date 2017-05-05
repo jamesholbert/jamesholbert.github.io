@@ -1,3 +1,22 @@
+'use strict'; // use strict forces the interpreter to be more strict with errors, good for debugging
+
+var characters = [];
+
+// Character object constructor
+function Character(name, level, CP, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice){
+  this.name = name,
+  this.level = level,
+  this.CP = CP,
+  this.actionDice = actionDice,
+  this.strDice = strDice,
+  this.dexDice = dexDice,
+  this.intDice = intDice,
+  this.profDice = profDice,
+  this.savvyDice = savvyDice,
+  this.masteryDice = masteryDice;
+}
+
+
 //elem.style.display = 'none'; // hide
 //elem.style.display = 'block'; // show - use this for block elements (div, p)
 //elem.style.display = 'inline'; // show - use this for inline elements (span, a)
@@ -14,6 +33,27 @@ var dexDice = 0;
 var intDice = 0;
 var CP = 10;
 var level=1;
+
+//save() function instantiates new character object, then pushes that object to characters array
+// and stringifies and saves the array to local storage
+function save(){
+  try {
+    var player = new Character(cName.value, level, CP, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice);
+    characters.push(player);
+    localStorage.characters = JSON.stringify(characters);
+    console.log('saving character ' + cName.value);
+  } catch (err) {
+    alert('Failed! Error: ' + err);
+  }
+}
+
+function load(){
+  try {
+    characters = JSON.parse(localStorage.characters);
+  } catch (error) {
+    alert('Failed to load!', error);
+  }
+}
 
 var texter = document.getElementById('texter');
 var btnAction = document.getElementById('btnAction');
@@ -35,57 +75,61 @@ var cInt = document.getElementById('currentIntDice');
 var burntDice = document.getElementById('burntDice');
 var cName = document.getElementById('characterName');
 
-function save() {
-  try {
-    var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
-    localStorage.save = JSON.stringify(dataToStore);
-  } catch (err) {
-    alert('Failed! Error: ' + err);
-  }
-}
-function load() {
-  try {
-    var dataToRetrieve = JSON.parse(localStorage.save);
-    totalDice = [];
-    actionDice = dataToRetrieve[0];
-    profDice = dataToRetrieve[1];
-    savvyDice = dataToRetrieve[2];
-    masteryDice = dataToRetrieve[3];
-    strDice = dataToRetrieve[4];
-    dexDice = dataToRetrieve[5];
-    intDice = dataToRetrieve[6];
-    level=dataToRetrieve[7];
-    CP=dataToRetrieve[8];
-    for (i=0;i<dataToRetrieve[0];i++) {
-      totalDice.push(new dice('Action Die', s, s, b, b, b, b))
-    }
-    for (i=0;i<dataToRetrieve[1];i++) {
-      totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
+// function save() {
+//   try {
+//     var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
+//     localStorage.save = JSON.stringify(dataToStore);
+//     console.log("saving");
+//   } catch (err) {
+//     alert('Failed! Error: ' + err);
+//   }
+// }
+// function load() {
+//   try {
+//     var dataToRetrieve = JSON.parse(localStorage.save);
+//     console.log(dataToRetrieve);
+//     totalDice = [];
+//     actionDice = dataToRetrieve[0];
+//     profDice = dataToRetrieve[1];
+//     savvyDice = dataToRetrieve[2];
+//     masteryDice = dataToRetrieve[3];
+//     strDice = dataToRetrieve[4];
+//     dexDice = dataToRetrieve[5];
+//     intDice = dataToRetrieve[6];
+//     CP = 10;
+//     level=dataToRetrieve[7];
+//     CP+=dataToRetrieve[8];
+//     for (i=0;i<dataToRetrieve[0];i++) {
+//       totalDice.push(new dice('Action Die', s, s, b, b, b, b))
+//     }
+//     for (i=0;i<dataToRetrieve[1];i++) {
+//       totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
+//
+//     }
+//     for (i=0;i<dataToRetrieve[2];i++) {
+//       totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
+//     }
+//     for (i=0;i<dataToRetrieve[3];i++) {
+//       totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
+//     }
+//     for (i=0;i<dataToRetrieve[4];i++) {
+//       totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
+//     }
+//     for (i=0;i<dataToRetrieve[5];i++) {
+//       totalDice.push(new dice('Dexterity Die', 'Dexterity', 'Dexterity', 'Dexterity', b, b, b))
+//     }
+//     for (i=0;i<dataToRetrieve[6];i++) {
+//       totalDice.push(new dice('Intelligence Die', 'Intelligence', 'Intelligence', 'Intelligence', b, b, b))
+//     }
+//     resultsDiv.innerHTML = '';
+//
+//     updateButtons();
+//     updateTexter();
+//   } catch(err) {
+//     alert('Failed! Error: ' + err);
+//   }
+// }
 
-    }
-    for (i=0;i<dataToRetrieve[2];i++) {
-      totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
-    }
-    for (i=0;i<dataToRetrieve[3];i++) {
-      totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
-    }
-    for (i=0;i<dataToRetrieve[4];i++) {
-      totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
-    }
-    for (i=0;i<dataToRetrieve[5];i++) {
-      totalDice.push(new dice('Dexterity Die', 'Dexterity', 'Dexterity', 'Dexterity', b, b, b))
-    }
-    for (i=0;i<dataToRetrieve[6];i++) {
-      totalDice.push(new dice('Intelligence Die', 'Intelligence', 'Intelligence', 'Intelligence', b, b, b))
-    }
-    resultsDiv.innerHTML = '';
-
-    updateButtons();
-    updateTexter();
-  } catch(err) {
-    alert('Failed! Error: ' + err);
-  }
-}
 function getRandomInt() {
   var min = Math.ceil(7);
   var max = Math.floor(1);
@@ -217,7 +261,7 @@ function btnAddAction() {
     totalDice.push(new dice('Action Die', s, s, b, b, b, b))
     updateTexter();
     updateButtons();
-  }  
+  }
 }
 function btnAddProf() {
   if (CP > 0 && actionDice > 0) {
@@ -244,7 +288,7 @@ function btnAddSavvy() {
     var x = findType('Proficiency Die');
     totalDice.splice(x, 1);
     updateTexter();
-  }  
+  }
 }
 function btnAddMastery() {
   if (CP > 0 && profDice > 0) {
@@ -268,8 +312,8 @@ function btnAddStr() {
     updateButtons();
     var x = findType('Action Die');
     totalDice.splice(x, 1);
-    updateTexter(); 
-    }
+    updateTexter();
+  }
 }
 function btnAddDex() {
   if (CP > 0 && actionDice > 0) {
@@ -294,52 +338,51 @@ function btnAddInt() {
     var x = findType('Action Die');
     totalDice.splice(x, 1);
     updateTexter();
-  }  
-}
-  function btnRoller() {
-    if (totalDice.length > 0) {
-      var results = [];
-      var iResults = [];
-      resultsDiv.innerHTML = '';
-      burntDice.style='border: solid black 1px; border-radius: 5px;'
-      burntDice.style.opacity = '0.5';
-      burntDice.innerHTML = 'Used Dice:';
-
-      var x = totalDice.length;
-      for (var i = 0; i < x; i++) {
-        results.push(totalDice[i].roll());
-        iResults[i]=document.createElement('img');
-        if (results[i] === 'Success') {
-          iResults[i].src='images/s.png';
-        } else if (results[i] === 'Blank') {
-          iResults[i].src='images/blank.svg';
-        } else if (results[i] === 'Exploit') {
-          iResults[i].src='images/se.png';
-        } else if (results[i] === 'Strength') {
-          iResults[i].src='images/ss.png';
-        } else if (results[i] === 'Intelligence') {
-          iResults[i].src='images/si.png';
-        } else if (results[i] === 'Dexterity') {
-          iResults[i].src='images/sd.png';
-        }
-        iResults[i].style='width:40px; border-radius:5px;';
-        iResults[i].onclick= function() {
-          burntDice.style.opacity = '1';
-
-          var thisClone=document.createElement('img');
-          thisClone.src=this.src;
-          this.onclick=''
-          this.src='images/damage.png'
-          thisClone.style='width:40px; border-radius:5px;';
-          burntDice.appendChild(thisClone);
-
-        }
-        resultsDiv.appendChild(iResults[i]);
-      }
-
-      updateTexter();
-    }
   }
+}
+function btnRoller() {
+  if (totalDice.length > 0) {
+    var results = [];
+    var iResults = [];
+    resultsDiv.innerHTML = '';
+    burntDice.style='border: solid black 1px; border-radius: 5px;'
+    burntDice.style.opacity = '0.5';
+    burntDice.innerHTML = 'Used Dice:';
 
-  outOfCP();
+    var x = totalDice.length;
+    for (var i = 0; i < x; i++) {
+      results.push(totalDice[i].roll());
+      iResults[i]=document.createElement('img');
+      if (results[i] === 'Success') {
+        iResults[i].src='images/s.png';
+      } else if (results[i] === 'Blank') {
+        iResults[i].src='images/blank.svg';
+      } else if (results[i] === 'Exploit') {
+        iResults[i].src='images/se.png';
+      } else if (results[i] === 'Strength') {
+        iResults[i].src='images/ss.png';
+      } else if (results[i] === 'Intelligence') {
+        iResults[i].src='images/si.png';
+      } else if (results[i] === 'Dexterity') {
+        iResults[i].src='images/sd.png';
+      }
+      iResults[i].style='width:40px; border-radius:5px;';
+      iResults[i].onclick= function() {
+        burntDice.style.opacity = '1';
 
+        var thisClone=document.createElement('img');
+        thisClone.src=this.src;
+        this.onclick=''
+        this.src='images/damage.png'
+        thisClone.style='width:40px; border-radius:5px;';
+        burntDice.appendChild(thisClone);
+
+      }
+      resultsDiv.appendChild(iResults[i]);
+    }
+
+    updateTexter();
+  }
+}
+
+outOfCP();
