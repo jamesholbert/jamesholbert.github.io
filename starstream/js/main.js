@@ -129,7 +129,7 @@ function load(){
     for (var i=0;i<characters[loadingIndex].intDice;i++) {
       totalDice.push(new dice('Intelligence Die', 'Intelligence', 'Intelligence', 'Intelligence', b, b, b))
     }
-    resultsDiv.innerHTML = 'Character loaded.';
+    resultsDiv.innerHTML = cName.value + ' loaded.';
 
     updateButtons();
     updateTexter();
@@ -146,7 +146,6 @@ function getRandomInt() {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 function findType(type) {
-  //var x = totalDice.length;
   for (var i = 0; i < totalDice.length; i++) {
     if (totalDice[i].name === type) {
       return i;
@@ -357,11 +356,12 @@ function btnRoller() {
   if (totalDice.length > 0) {
     var results = [];
     var iResults = [];
+// Clear the results Div since we're just appending instances of images    
     resultsDiv.innerHTML = '';
     burntDice.style='border: solid black 1px; border-radius: 5px;'
     burntDice.style.opacity = '0.5';
     burntDice.innerHTML = 'Used Dice:';
-
+// Load an array with images of the results
     var x = totalDice.length;
     for (var i = 0; i < x; i++) {
       results.push(totalDice[i].roll());
@@ -380,6 +380,7 @@ function btnRoller() {
         iResults[i].src='images/sd.png';
       }
       iResults[i].style='width:40px; border-radius:5px;';
+    //Make those images clickable, which causes them to shift to the "Used" div and become unclickable. What's left is a burnt die
       iResults[i].onclick= function() {
         burntDice.style.opacity = '1';
 
@@ -391,6 +392,7 @@ function btnRoller() {
         burntDice.appendChild(thisClone);
 
       }
+      // Fill the resutls Div with the images
       resultsDiv.appendChild(iResults[i]);
     }
 
@@ -398,4 +400,6 @@ function btnRoller() {
   }
 }
 
+
+//This is called in order to grey out the buttons
 outOfCP();
