@@ -129,6 +129,7 @@ var cName = document.getElementById('characterName');
 //     alert('Failed! Error: ' + err);
 //   }
 // }
+
 function getRandomInt() {
   var min = Math.ceil(7);
   var max = Math.floor(1);
