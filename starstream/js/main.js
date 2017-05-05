@@ -14,7 +14,7 @@ function Character(name, level, CP, actionDice, strDice, dexDice, intDice, profD
   this.profDice = profDice,
   this.savvyDice = savvyDice,
   this.masteryDice = masteryDice;
-}
+} 
 
 
 //elem.style.display = 'none'; // hide
@@ -36,9 +36,24 @@ var level=1;
 
 //save() function instantiates new character object, then pushes that object to characters array
 // and stringifies and saves the array to local storage
-function save(){
+function save() {
   try {
+    try {
+      characters = JSON.parse(localStorage.characters);
+      console.log('Found previous characters, loading them first, then saving them all.');
+    } catch (err) {
+      characters = [];
+      console.log('No previously saved characters, creating new array.');
+    }
     var player = new Character(cName.value, level, CP, actionDice, strDice, dexDice, intDice, profDice, savvyDice, masteryDice);
+    characters = JSON.parse(localStorage.characters);
+
+    for (var character = 0; character < characters.length; character++) {
+      if (characters[character].name === player.name) {
+        characters.splice(character, 1);
+      }
+    }
+
     characters.push(player);
     localStorage.characters = JSON.stringify(characters);
     console.log('saving character ' + cName.value);
@@ -50,6 +65,57 @@ function save(){
 function load(){
   try {
     characters = JSON.parse(localStorage.characters);
+    console.log(characters);
+    for (var character = 0; character < characters.length; character++) {
+      if (characters[character].name === cName.value) {
+        var loadingIndex=character;
+      }
+    }
+
+    totalDice = [];
+    actionDice = characters[loadingIndex].actionDice;
+    profDice = characters[loadingIndex].profDice;
+    savvyDice = characters[loadingIndex].savvyDice;
+    masteryDice = characters[loadingIndex].masteryDice;
+    strDice = characters[loadingIndex].strDice;
+    dexDice = characters[loadingIndex].dexDice;
+    intDice = characters[loadingIndex].intDice;
+    CP =characters[loadingIndex].CP;
+    level=characters[loadingIndex].level;
+    console.log('pretty far');
+    for (var i=0;i<characters[loadingIndex].actionDice;i++) {
+      totalDice.push(new dice('Action Die', s, s, b, b, b, b))
+      console.log("action");
+    }
+    for (var i=0;i<characters[loadingIndex].profDice;i++) {
+      totalDice.push(new dice('Proficiency Die', s, s, s, e, b, b))
+
+    }
+    for (var i=0;i<characters[loadingIndex].savvyDice;i++) {
+      totalDice.push(new dice('Savvy Die', s, s, s, e, e, b))
+    }
+    for (var i=0;i<characters[loadingIndex].masteryDice;i++) {
+      totalDice.push(new dice('Mastery Die', s, s, s, s, e, b))
+    }
+    for (var i=0;i<characters[loadingIndex].strDice;i++) {
+      totalDice.push(new dice('Strength Die', 'Strength', 'Strength', 'Strength', b, b, b))
+    }
+    for (var i=0;i<characters[loadingIndex].dexDice;i++) {
+      totalDice.push(new dice('Dexterity Die', 'Dexterity', 'Dexterity', 'Dexterity', b, b, b))
+    }
+    for (var i=0;i<characters[loadingIndex].intDice;i++) {
+      totalDice.push(new dice('Intelligence Die', 'Intelligence', 'Intelligence', 'Intelligence', b, b, b))
+    }
+    resultsDiv.innerHTML = '';
+
+    updateButtons();
+    updateTexter();
+
+
+
+
+
+
   } catch (error) {
     alert('Failed to load!', error);
   }
@@ -75,15 +141,6 @@ var cInt = document.getElementById('currentIntDice');
 var burntDice = document.getElementById('burntDice');
 var cName = document.getElementById('characterName');
 
-// function save() {
-//   try {
-//     var dataToStore = [actionDice,profDice,savvyDice,masteryDice,strDice,dexDice,intDice,level, CP]
-//     localStorage.save = JSON.stringify(dataToStore);
-//     console.log("saving");
-//   } catch (err) {
-//     alert('Failed! Error: ' + err);
-//   }
-// }
 // function load() {
 //   try {
 //     var dataToRetrieve = JSON.parse(localStorage.save);
