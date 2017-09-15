@@ -2,25 +2,11 @@ body, html {
     height: 100%;
 }
 
-/*.hero-image {
-	width:100%;
-	top: -300px;
-	height: 50%;
-	background-image: url("images/hero.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;	
-}*/
+
 
 .hero-image {
-    /* The image used */
-    background-image: url("../images/hero.jpg");
-
-    /* Set a specific height */
+    background-image: url("../images/hero2.jpg");
     height: 100%;
-
-    /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,22 +27,31 @@ body, html {
 }
 
 .arrow {
-	width: 50%;
-}
-
-.samples {
-    width:100%;
+	width: 25%;
 }
 
 .sample-window {
-	/*width:100%;*/
+    margin-top: 2em;
 	margin-left:auto;
 	margin-right:auto;
-	width:400px;
+	/*width: 348px;*/
+    /*width: 100%*/
     box-shadow: 10px 10px 5px #888888;
     border: solid 1px black;
     border-radius: 15px
-      /*<div style="margin-left:auto;margin-right:auto;width:400px;"></div>*/
 
 }
 
+.sample-window:hover
+{
+    /*box-shadow: 0px 0px 150px #000000;*/
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
