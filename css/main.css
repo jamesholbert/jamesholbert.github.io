@@ -11,6 +11,8 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    opacity: .8;
+
 }
 
 .hero-text, .scroll, .scroll-arrow {
