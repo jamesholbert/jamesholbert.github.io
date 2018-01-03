@@ -1,9 +1,39 @@
+table {
+	width: 100%;
+}
+
 td {
 	border: 1px solid black;
 }
 
-div {
+.chat {
 	border: dotted 1px grey;
 	margin-top: 1em;
 	padding: 1em;
+	display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.left {
+	grid-column-start: 1;
+}
+
+.right {
+	grid-column-start: 2;
+}
+
+img {
+	width: 50px;
+}
+
+#chat-container {
+	max-width: 800px;
+	min-width: 800px;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+
+#container {
+/*	align-items: center;*/
 }
