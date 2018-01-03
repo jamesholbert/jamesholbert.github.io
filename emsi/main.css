@@ -1,3 +1,9 @@
 td {
 	border: 1px solid black;
 }
+
+div {
+	border: dotted 1px grey;
+	margin-top: 1em;
+	padding: 1em;
+}
