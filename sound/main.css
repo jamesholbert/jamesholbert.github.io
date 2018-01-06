@@ -1,14 +1,20 @@
+#container {
+	display: flex;
+	/*justify-content: center;*/
+
+}
+
 #table {
 	display: flex;
 	/*grid-template-columns: 10% 10%;*/
-	/*justify-content: center;*/
 	flex-direction: column;
 }
 
-.left-column, .right-column, div {
+div {
 	border: 1px solid black;
 	min-width: 150px;
 	max-width: 340px;
+	font-size: 30px;
 }
 
 .left-column {
