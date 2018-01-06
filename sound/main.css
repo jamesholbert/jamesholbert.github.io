@@ -1,16 +1,20 @@
 #table {
-	display: grid;
-	grid-template-columns: 10% 10%;
+	display: flex;
+	/*grid-template-columns: 10% 10%;*/
+	/*justify-content: center;*/
+	flex-direction: column;
 }
 
-.left-column, .right-column {
+.left-column, .right-column, div {
 	border: 1px solid black;
+	min-width: 150px;
+	max-width: 340px;
 }
 
 .left-column {
-	grid-column-start: 1;
+	/*grid-column-start: 1;*/
 }
 
 .right-column {
-	grid-column-start: 2; 
+	/*grid-column-start: 2; */
 }

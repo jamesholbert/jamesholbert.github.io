@@ -144,9 +144,10 @@ for sunday in sundays:
 
 
 	# print out Sunday and Person
-	print('<div class="left-column">' + sunday + '</div>' + '<div class="right-column">' + soundPeeps[candidateIndex]['name'] + '</div>')
-for person in soundPeeps:
-	print person
+	print('<div>' + sunday + ': ' + soundPeeps[candidateIndex]['name'] + '</div>')
+	# print('<div class="left-column">' + sunday + '</div>' + '<div class="right-column">' + soundPeeps[candidateIndex]['name'] + '</div>')
+# for person in soundPeeps:
+# 	print person
 
 
 
