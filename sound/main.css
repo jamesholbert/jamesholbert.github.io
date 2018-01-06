@@ -1,0 +1,16 @@
+#table {
+	display: grid;
+	grid-template-columns: 10% 10%;
+}
+
+.left-column, .right-column {
+	border: 1px solid black;
+}
+
+.left-column {
+	grid-column-start: 1;
+}
+
+.right-column {
+	grid-column-start: 2; 
+}
