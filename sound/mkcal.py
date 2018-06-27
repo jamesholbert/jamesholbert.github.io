@@ -1,7 +1,7 @@
 soundPeeps = [
 	{
 		'name': 'James',
-		'notAvailable': ['March'],
+		'notAvailable': ['August'],
 		'total': 0,
 		'delay': 0
 	},
@@ -18,12 +18,6 @@ soundPeeps = [
 		'delay': 0
 	},
 	{
-		'name': 'Andy',
-		'notAvailable': ['April'],
-		'total': 0,
-		'delay': 0
-	},
-	{
 		'name': 'Cheryl',
 		'notAvailable': ['July'],
 		'total': 0,
@@ -31,13 +25,13 @@ soundPeeps = [
 	},
 	{
 		'name': 'Curt',
-		'notAvailable': ['March'],
+		'notAvailable': ['July'],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Hunter',
-		'notAvailable': ['December'],
+		'notAvailable': ['August', 'September', 'August','November','December'],
 		'total': 0,
 		'delay': 0
 	},
@@ -55,31 +49,7 @@ soundPeeps = [
 	},
 ]
 
-sundays = ['January 7',
-'January 14',
-'January 21',
-'January 28',
-'February 4',
-'February 11',
-'February 18',
-'February 25',
-'March 4',
-'March 11',
-'March 18',
-'March 25',
-'April 1',
-'April 8',
-'April 15',
-'April 22',
-'April 29',
-'May 6',
-'May 13',
-'May 20',
-'May 27',
-'June 3',
-'June 10',
-'June 17',
-'June 24',
+sundays = [
 'July 1',
 'July 8',
 'July 15',
