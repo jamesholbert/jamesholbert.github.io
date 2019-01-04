@@ -1,7 +1,7 @@
 soundPeeps = [
 	{
 		'name': 'James',
-		'notAvailable': ['August'],
+		'notAvailable': ['January'],
 		'total': 0,
 		'delay': 0
 	},
@@ -31,7 +31,7 @@ soundPeeps = [
 	},
 	{
 		'name': 'Hunter',
-		'notAvailable': ['August', 'September', 'August','November','December'],
+		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
@@ -50,33 +50,32 @@ soundPeeps = [
 ]
 
 sundays = [
-'July 1',
-'July 8',
-'July 15',
-'July 22',
-'July 29',
-'August 5',
-'August 12',
-'August 19',
-'August 26',
-'September 2',
-'September 9',
-'September 16',
-'September 23',
-'September 30',
-'October 7',
-'October 14',
-'October 21',
-'October 28',
-'November 4',
-'November 11',
-'November 18',
-'November 25',
-'December 2',
-'December 9',
-'December 16',
-'December 23',
-'December 30']
+'January 6',
+'January 13',
+'January 20',
+'January 27',
+'February 3',
+'February 10',
+'February 17',
+'February 24',
+'March 3',
+'March 10',
+'March 17',
+'March 24',
+'March 31',
+'April 7',
+'April 14',
+'April 21',
+'April 28',
+'May 5',
+'May 12',
+'May 19',
+'May 26',
+'June 2',
+'June 9',
+'June 16',
+'June 23',
+'June 30']
 
 calendar = [
 	
