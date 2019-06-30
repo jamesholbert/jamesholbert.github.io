@@ -1,81 +1,108 @@
 soundPeeps = [
 	{
 		'name': 'James',
-		'notAvailable': ['January'],
+		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Scott',
-		'notAvailable': ['April'],
+		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Pete',
-		'notAvailable': ['May'],
+		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Cheryl',
-		'notAvailable': ['July'],
+		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Curt',
-		'notAvailable': ['July'],
+		'notAvailable': ['October'],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Hunter',
-		'notAvailable': [],
+		'notAvailable': ['October'],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Isaac',
-		'notAvailable': ['November'],
-		'total': 0,
-		'delay': 0
-	},
-	{
-		'name': 'Joe',
 		'notAvailable': [],
 		'total': 0,
 		'delay': 0
 	},
+	# {
+	# 	'name': 'Joe',
+	# 	'notAvailable': [],
+	# 	'total': 0,
+	# 	'delay': 0
+	# },
 ]
 
 sundays = [
-'January 6',
-'January 13',
-'January 20',
-'January 27',
-'February 3',
-'February 10',
-'February 17',
-'February 24',
-'March 3',
-'March 10',
-'March 17',
-'March 24',
-'March 31',
-'April 7',
-'April 14',
-'April 21',
-'April 28',
-'May 5',
-'May 12',
-'May 19',
-'May 26',
-'June 2',
-'June 9',
-'June 16',
-'June 23',
-'June 30']
+# 'January 6',
+# 'January 13',
+# 'January 20',
+# 'January 27',
+# 'February 3',
+# 'February 10',
+# 'February 17',
+# 'February 24',
+# 'March 3',
+# 'March 10',
+# 'March 17',
+# 'March 24',
+# 'March 31',
+# 'April 7',
+# 'April 14',
+# 'April 21',
+# 'April 28',
+# 'May 5',
+# 'May 12',
+# 'May 19',
+# 'May 26',
+# 'June 2',
+# 'June 9',
+# 'June 16',
+# 'June 23',
+# 'June 30'
+'July 7',
+'July 14',
+'July 21',
+'July 28',
+'August 4',
+'August 11',
+'August 18',
+'August 25',
+'September 1',
+'September 8',
+'September 15',
+'September 22',
+'September 29',
+'October 6',
+'October 13',
+'October 20',
+'October 27',
+'November 3',
+'November 10',
+'November 17',
+'November 24',
+'December 1',
+'December 8',
+'December 15',
+'December 22',
+'December 29'
+]
 
 calendar = [
 	
