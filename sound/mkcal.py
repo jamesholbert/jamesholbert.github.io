@@ -1,7 +1,7 @@
 soundPeeps = [
 	{
 		'name': 'James',
-		'notAvailable': [],
+		'notAvailable': ['February 2', 'January 26', 'February 23', 'March 22', 'April 19'],
 		'total': 0,
 		'delay': 0
 	},
@@ -25,13 +25,13 @@ soundPeeps = [
 	},
 	{
 		'name': 'Curt',
-		'notAvailable': ['October'],
+		'notAvailable': ['May 24', 'April'],
 		'total': 0,
 		'delay': 0
 	},
 	{
 		'name': 'Hunter',
-		'notAvailable': ['October'],
+		'notAvailable': ['May 24'],
 		'total': 0,
 		'delay': 0
 	},
@@ -40,68 +40,62 @@ soundPeeps = [
 		'notAvailable': [],
 		'total': 0,
 		'delay': 0
-	},
-	# {
-	# 	'name': 'Joe',
-	# 	'notAvailable': [],
-	# 	'total': 0,
-	# 	'delay': 0
-	# },
+	}
 ]
 
 sundays = [
-# 'January 6',
-# 'January 13',
-# 'January 20',
-# 'January 27',
-# 'February 3',
-# 'February 10',
-# 'February 17',
-# 'February 24',
-# 'March 3',
-# 'March 10',
-# 'March 17',
-# 'March 24',
-# 'March 31',
-# 'April 7',
-# 'April 14',
-# 'April 21',
-# 'April 28',
-# 'May 5',
-# 'May 12',
-# 'May 19',
-# 'May 26',
-# 'June 2',
-# 'June 9',
-# 'June 16',
-# 'June 23',
-# 'June 30'
-'July 7',
-'July 14',
-'July 21',
-'July 28',
-'August 4',
-'August 11',
-'August 18',
-'August 25',
-'September 1',
-'September 8',
-'September 15',
-'September 22',
-'September 29',
-'October 6',
-'October 13',
-'October 20',
-'October 27',
-'November 3',
-'November 10',
-'November 17',
-'November 24',
-'December 1',
-'December 8',
-'December 15',
-'December 22',
-'December 29'
+'January 5',
+'January 12',
+'January 19',
+'January 26',
+'February 2',
+'February 9',
+'February 16',
+'February 23',
+'March 1',
+'March 8',
+'March 15',
+'March 22',
+'March 29',
+'April 5',
+'April 12',
+'April 19',
+'April 26',
+'May 3',
+'May 10',
+'May 17',
+'May 24',
+'May 31',
+'June 7',
+'June 14',
+'June 21',
+'June 28'
+# 'July 5',
+# 'July 12',
+# 'July 19',
+# 'July 26',
+# 'August 2',
+# 'August 9',
+# 'August 16',
+# 'August 23',
+# 'August 30',
+# 'September 6',
+# 'September 13',
+# 'September 20',
+# 'September 27',
+# 'October 4',
+# 'October 11',
+# 'October 18',
+# 'October 25',
+# 'November 1',
+# 'November 8',
+# 'November 15',
+# 'November 22',
+# 'November 29',
+# 'December 6',
+# 'December 13',
+# 'December 20',
+# 'December 27'
 ]
 
 calendar = [
@@ -122,7 +116,7 @@ for sunday in sundays:
 		personIndex+=1
 		# print(personIndex)
 		# print(person['total'])
-		if month not in person['notAvailable']:
+		if month not in person['notAvailable'] and sunday not in person['notAvailable']:
 			# find who has the fewest tallies and hasn't ran sound in a while
 			if candidateDelay+candidateTotal < person['total']+person['delay']:
 				candidateDelay=person['delay']
